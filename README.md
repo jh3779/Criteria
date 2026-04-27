@@ -67,3 +67,19 @@ Run migrations in order:
 - If Supabase is not configured, read endpoints use seeded sample posts.
 - Admin write operations and AI log persistence require service-role access.
 - `OPENAI_MODEL` defaults to `gpt-4o`.
+
+## Deployment (Vercel)
+
+1. Push this repository to GitHub.
+2. Import the repo in Vercel.
+3. In Vercel Project Settings -> Environment Variables, set:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - `ADMIN_PASSWORD`
+   - `OPENAI_API_KEY`
+   - `OPENAI_MODEL` (optional)
+4. Ensure Supabase migrations are applied in order:
+   - `supabase/migrations/001_init.sql`
+   - `supabase/migrations/002_thinking_system.sql`
+5. Redeploy the project after env vars are saved.

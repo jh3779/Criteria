@@ -67,3 +67,19 @@ Supabase SQL Editor에서 아래 순서로 실행하세요.
 - Supabase 설정이 없으면 읽기 API는 샘플 포스트를 사용합니다.
 - 관리자 쓰기 및 AI 로그 저장에는 service role key가 필요합니다.
 - `OPENAI_MODEL` 기본값은 `gpt-4o`입니다.
+
+## 배포 (Vercel)
+
+1. 이 저장소를 GitHub에 푸시합니다.
+2. Vercel에서 해당 저장소를 Import 합니다.
+3. Vercel Project Settings -> Environment Variables에 아래 값을 설정합니다.
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+   - `ADMIN_PASSWORD`
+   - `OPENAI_API_KEY`
+   - `OPENAI_MODEL` (선택)
+4. Supabase 마이그레이션을 순서대로 적용합니다.
+   - `supabase/migrations/001_init.sql`
+   - `supabase/migrations/002_thinking_system.sql`
+5. env 저장 후 프로젝트를 다시 배포합니다.
